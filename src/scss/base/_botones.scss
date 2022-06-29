@@ -1,0 +1,32 @@
+.boton-amarillo{
+    @include boton($amarillo,block)
+}
+.boton-verde{
+    @include boton($verde, block);
+}
+.boton-verde-adm{
+    margin-top: .5rem;
+    @include boton($verde, block);    
+    @include tablet{
+        @include boton($verde, inline-block);
+    }
+
+}
+.boton-amarillo-il{
+    @include boton($amarillo,inline-block)
+}
+.boton-verde-il {
+    @include boton($verde, inline-block);
+}
+
+.btn-borrar{
+    background-color: $rojo;
+    border: none;
+}
+.btn-editar{
+    background-color: $amarillo;
+    border: none;
+}
+.btn-secondary:hover{
+    background-color: $grisOscuro;
+}

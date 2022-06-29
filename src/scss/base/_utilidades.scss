@@ -1,0 +1,28 @@
+.seccion {
+    margin-top: calc($separacion / 2);
+    margin-bottom: calc($separacion / 2);
+}
+.contenido-centrado {
+    max-width: 800px;
+}
+.alinear-derechaLg{
+    @include tablet (){
+        display: flex;
+        justify-content: flex-end;
+    }
+
+}
+.alinear-izquierdaLg{
+    @include tablet (){
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+.alinear-derecha{
+    display: flex;
+    justify-content: flex-end;
+}
+.alinear-izquierda{
+    display: flex;
+    justify-content: flex-start;
+}

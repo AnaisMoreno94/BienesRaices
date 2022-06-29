@@ -1,0 +1,70 @@
+@include tablet {
+    .seccion-inferior {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 2rem;
+    }
+}
+.seccion-inferior{
+    h3{
+        font-size: 3.5rem;
+        font-weight: 300;
+    }
+}
+.blog{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    row-gap: 2rem;
+    @include tablet {
+        row-gap: 2rem;
+    }
+}
+.imagen-entrada{
+    display: flex;
+    align-items: center;
+
+}
+.entrada-blog{
+    @include tablet{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 2rem;
+    }
+    &:last-of-type{
+        margin-bottom: 0;
+    }
+}
+
+.texto-entrada{
+    a{
+        color: $negro;
+    }
+    h4{
+        margin-top: .5rem;
+        margin-bottom: 0;
+        line-height: 1.4;
+        &::after{
+            content: '';
+            display: block;
+            width: 15rem;
+            height: .5rem;
+            background-color: $verde;
+            margin-top: .5rem;
+
+        }
+    }
+    span{
+        color: $amarillo;
+    }
+    p{
+        margin: 1rem 0 ;
+        font-weight: 300;
+    }
+    @include tablet{
+        h4{
+            margin-top: 0;
+        }
+        
+    }
+}

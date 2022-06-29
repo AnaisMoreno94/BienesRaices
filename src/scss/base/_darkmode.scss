@@ -1,0 +1,24 @@
+.dark-mode {
+    background-color: darken($grisOscuro, 10);
+    p,h1,h2,h3,h4{
+        color: $blanco;
+    }
+    .dark-mode-boton{
+        color: darken($gris,40);
+    }
+    .anuncio{
+        background-color: darken($grisOscuro,5);
+        border-color: darken($grisOscuro, 7);
+        .iconos-caracteristicas{
+            p{color: black;
+        }
+    }
+    }
+
+    .formulario{
+        fieldset,legend{
+            color: $blanco;
+            margin-top: 1rem;
+        }
+    }
+}

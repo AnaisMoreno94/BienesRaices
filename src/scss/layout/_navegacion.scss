@@ -1,0 +1,92 @@
+.barra {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+   
+    
+    @include tablet {
+        flex-direction: row;
+        align-items: center;
+        padding-top: 2rem;
+    }
+}
+
+.navegacion {
+
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility .3s ease-in-out, opacity .2s linear;
+    @include tablet {
+        display: flex;    
+        visibility: visible;
+        opacity: 1;    
+    }
+    p{
+        margin: 0;
+        text-align: center;
+        font-size: 2rem;
+        &:hover{
+            cursor: pointer;
+        }
+        @include tablet{
+            margin-left: 1rem;
+        }
+    }
+
+    a{
+        color: $blanco;
+        text-decoration: none;
+        font-size: 2rem;
+        font-weight: 300;
+        display: block;
+        text-align: center;
+
+        @include tablet {
+            margin-right: 2rem;
+            font-size: 2rem;
+            
+            &:last-of-type{
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.nav_footer{
+
+    a{
+        margin-left: 2rem;
+        color: $blanco;
+        text-decoration: none;
+        font-size: 2rem;
+        font-weight: 200;
+        
+    }
+    &:last-of-type{
+        margin-left: 0;
+    }
+
+    padding: .5rem;
+}
+
+.mobile-menu{
+    @include tablet {
+        display: none;
+    }
+    img{
+        width: 3rem;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.mostrar{
+    visibility: visible;
+    opacity: 1;
+}
+
+.dark-mode-boton{
+ color: $blanco;
+}

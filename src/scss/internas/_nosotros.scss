@@ -1,0 +1,40 @@
+.texto-nosotros{
+    p{
+        font-weight: 300;
+    }
+    @media(max-width: 768px){
+        max-width: 95%;
+        margin: 0 auto;
+    }
+    
+}
+
+.nosotros-display{
+    @include tablet{
+        @include grid(2,4rem);
+    }
+    .img-nosotros{
+        display: flex;
+        align-items: center;
+    }
+}
+
+.contenido-nosotros{
+    h2{
+        margin: 1rem 0;
+        @include tablet{
+            margin-top: 0;
+        }
+    }
+
+    p{
+        line-height: 1.3;
+        margin: 0 0 1rem 0;
+        text-align: justify;
+        
+    }
+    p:last-of-type{
+        margin-bottom: 0;
+    }
+    
+}
