@@ -50,7 +50,14 @@ function darkMode() {
 
 }
 
-function removerMiniatura(){
-    let miniatura = document.getElementById('miniatura');
-    miniatura.remove();
+function cambiarMiniatura(){
+    const miniatura = document.getElementById('miniatura');
+    const imagen = document.getElementById('imagen');
+    const objectURL = URL.createObjectURL(imagen.files[0]);
+
+    miniatura.src = objectURL;
 }
+const autonumeric = new AutoNumeric.multiple('.AutoPrecio',{
+    currencySymbol: ' $',
+    currencySymbolPlacement: 'p'
+})

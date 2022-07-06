@@ -21,4 +21,11 @@
             margin-top: 1rem;
         }
     }
+    table.propiedades{
+        td{
+            color: $blanco;
+            font-weight: 300;
+            background-color:$grisOscuro;
+        }
+    }
 }
