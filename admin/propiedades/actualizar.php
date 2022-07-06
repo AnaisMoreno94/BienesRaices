@@ -30,7 +30,7 @@
     $habitaciones = $propiedad['habitaciones'];
     $wc = $propiedad['wc'];
     $estacionamiento = $propiedad['estacionamiento'];
-    $vendedorId = $propiedad['vendedorID'];
+    $vendedorID = $propiedad['vendedorID'];
     $imagenPropiedad= $propiedad['imagen'];
 
 
@@ -44,10 +44,10 @@
         $habitaciones = mysqli_real_escape_string( $db,  $_POST['habitaciones'] );
         $wc = mysqli_real_escape_string( $db,  $_POST['wc'] );
         $estacionamiento = mysqli_real_escape_string( $db,  $_POST['estacionamiento'] );
-        $vendedorId = mysqli_real_escape_string( $db,  $_POST['vendedor'] );
+        $vendedorID = mysqli_real_escape_string( $db,  $_POST['vendedor'] );
         $creado = date('Y/m/d');
 
-        // Asignar files hacia una variable
+        // Asignar archivos hacia una variable
         $imagen = $_FILES['imagen'];
 
 
@@ -75,25 +75,21 @@
             $errores[] = 'El Número de lugares de Estacionamiento es obligatorio';
         }
         
-        if(!$vendedorId) {
+        if(!$vendedorID) {
             $errores[] = 'Elige un vendedor';
         }
 
-
         // Validar por tamaño (1mb máximo)
         $medida = 1000 * 1000;
-
 
         if($imagen['size'] > $medida ) {
             $errores[] = 'La Imagen es muy pesada';
         }
 
 
-        // Revisar que el array de errores este vacio
+        // Revisar que el array de errores este vacio antes de ejecutar el query
 
         if(empty($errores)) {
-
-            /** SUBIDA DE ARCHIVOS */
 
             // Crear carpeta
             $carpetaImagenes = '../../imagenes/';
@@ -101,14 +97,24 @@
             if(!is_dir($carpetaImagenes)) {
                 mkdir($carpetaImagenes);
             }
+            
+            $nombreImagen='';
 
-            // Generar un nombre único
-            $nombreImagen = md5( uniqid( rand(), true ) ) . ".jpg";
+            /** SUBIDA DE ARCHIVOS */
+
+            if($imagen['name']){
+                //Eliminar imagen previa 
+                unlink($carpetaImagenes . $propiedad['imagen']);   
+                
+                // Generar un nombre único
+                $nombreImagen = md5( uniqid( rand(), true ) ) . ".jpg";
 
 
-            // Subir la imagen
-            move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen );
- 
+                // Subir la imagen
+                move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen );
+            } else {
+                $nombreImagen = $propiedad['imagen'];
+            }      
 
             // Insertar en la base de datos
             $query = " UPDATE propiedades SET titulo = '${titulo}', precio = '${precio}', imagen='${nombreImagen}', descripcion = '${descripcion}', habitaciones = ${habitaciones} , wc = ${wc}, estacionamiento = ${estacionamiento}, vendedorID = ${vendedorID} WHERE id=${id} ";
@@ -186,7 +192,7 @@
                 <select name="vendedor">
                     <option value="">-- Seleccione --</option>
                     <?php while($vendedor =  mysqli_fetch_assoc($resultado) ) : ?>
-                        <option  <?php echo $vendedorId === $vendedor['id'] ? 'selected' : ''; ?>   value="<?php echo $vendedor['id']; ?>"> <?php echo $vendedor['nombre'] . " " . $vendedor['apellido']; ?> </option>
+                        <option  <?php echo $vendedorID === $vendedor['id'] ? 'selected' : ''; ?>   value="<?php echo $vendedor['id']; ?>"> <?php echo $vendedor['nombre'] . " " . $vendedor['apellido']; ?> </option>
                     <?php endwhile; ?>
                 </select>
             </fieldset>

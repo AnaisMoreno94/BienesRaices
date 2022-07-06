@@ -54,4 +54,3 @@ new AutoNumeric.multiple('.AutoPrecio',{
     currencySymbol: ' $',
     currencySymbolPlacement: 'p'
 }).norhtAmerica();
-
