@@ -50,7 +50,7 @@ function darkMode() {
 
 }
 
-new AutoNumeric.multiple('.AutoPrecio',{
-    currencySymbol: ' $',
-    currencySymbolPlacement: 'p'
-}).norhtAmerica();
+function removerMiniatura(){
+    let miniatura = document.getElementById('miniatura');
+    miniatura.remove();
+}
