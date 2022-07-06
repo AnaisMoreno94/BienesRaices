@@ -83,5 +83,5 @@
     // Cerrar la conexion
     mysqli_close($db);
 
-    incluirTemplate('footer');
+    incluirTemplate('footer-admin');
 ?>

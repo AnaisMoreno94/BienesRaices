@@ -183,5 +183,5 @@
     </main>
 
 <?php 
-    incluirTemplate('footer');
+    incluirTemplate('footer-admin');
 ?> 
