@@ -1,21 +1,48 @@
 <?php 
+
+  //importar conexion a base de datos
+  require 'includes/config/database.php';
+  $db = conectarDB();
+
+  $id = $_GET['id'];
+  $id = filter_var($id, FILTER_VALIDATE_INT);
+  if($id){
+      //consultar 
+  $query = "SELECT * FROM propiedades WHERE id= ${id}";
+  $resultado = mysqli_query($db, $query);
+
+  //obtener resultado
+  $propiedad=mysqli_fetch_assoc($resultado);
+  } else {
+    
+  }
+
+  if(!$propiedad){
+    header('location: index');
+  }  
+  
+
+
+
 require 'includes/funciones.php';
 
 incluirTemplate('header');
+
 ?>
 
     <main class="contenedor contenedor-anuncio">
+      
 
-      <h1>Casa con acabados de lujo y alberca </h1>
+      <h1><?php echo $propiedad['titulo']?></h1>
+      
+      <div class="text-center">
+      <img src="imagenes/<?php echo $propiedad['imagen']?>" alt="Anuncio" loading="lazy" class="img-anuncio">
+      </div>
 
       <div class="anuncio">
-        <picture>
-          <source srcset="build/img/destacada.webp" type="image/webp">
 
-          <source srcset="build/img/destacada.jpg" type="image/jpeg">
+       
 
-          <img src="build/img/destacada.jpg" alt="Anuncio" loading="lazy">
-        </picture>
 
         <div class="contenido-anuncio">
 
@@ -23,25 +50,25 @@ incluirTemplate('header');
 
             <li>
               <img src="build/img/icono_wc.svg" alt="icono wc">
-              <p>3</p>
+              <p><?php echo $propiedad['wc']?></p>
             </li><!-- icono 1-->
 
             <li>
               <img src="build/img/icono_estacionamiento.svg" alt="icono estacionamiento">
-              <p>2</p>
+              <p><?php echo $propiedad['estacionamiento']?></p>
             </li><!--Icono 2-->
 
             <li>
               <img src="build/img/icono_dormitorio.svg" alt="icono dormitorio">
-              <p>4</p>
+              <p><?php echo $propiedad['habitaciones']?></p>
             </li><!--Icono 3-->
 
           </ul><!-- .iconos-caracteristicas-->
-          <p class="precio"> $ 3.000.000</p>
+          <p class="precio AutoPrecio"> <?php echo $propiedad['precio']?></p>
            <div class="texto-anuncio">
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sed possimus est tempore nemo molestiae! Fuga facere perferendis, voluptatum repellendus laborum sunt quaerat provident impedit? Rerum maiores est dicta quae!</p>
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, quis! Provident id soluta ipsum est eius, officia libero odit animi quae deserunt fugit, perspiciatis necessitatibus dignissimos voluptas tempore, illum ullam.</p>
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolorum ullam omnis unde architecto numquam vitae molestias voluptatum, provident earum. Exercitationem laborum ea, sapiente ipsa libero id magni laboriosam blanditiis.</p>
+
+             <p><?php echo $propiedad['descripcion']?></p>
+             
            </div>
           
         </div><!-- .contenido-anuncio-->
@@ -50,4 +77,6 @@ incluirTemplate('header');
 
 
     </main>
-<?php incluirTemplate('footer'); ?>
+<?php incluirTemplate('footer');
+   mysqli_close($db);
+ ?>

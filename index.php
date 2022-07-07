@@ -40,131 +40,13 @@ incluirTemplate('header', $inicio= true);
 
       <h2>Casas y Depas en Venta</h2>
 
-      <div class="contenedor-anuncios">
+      <?php 
+      $limite = 6;
 
-        <div class="anuncio">
-
-          <picture>
-            <source srcset="build/img/anuncio1.webp" type="image/webp">
-
-            <source srcset="build/img/anuncio1.jpg" type="image/jpeg">
-
-            <img src="build/img/anuncio1.jpg" alt="Anuncio" loading="lazy">
-          </picture>
-
-          <div class="contenido-anuncio">
-            <h3>Casa en el Lago</h3>
-            <p>Casa en el lago con excelente vista, acabados de lujo a un excelente precio</p>
-            <p class="precio"> $ 3.000.000</p>
-
-            <ul class="iconos-caracteristicas">
-
-              <li>
-                <img src="build/img/icono_wc.svg" alt="icono wc">
-                <p>3</p>
-              </li><!-- icono 1-->
-
-              <li>
-                <img src="build/img/icono_estacionamiento.svg" alt="icono estacionamiento">
-                <p>2</p>
-              </li><!--Icono 2-->
-
-              <li>
-                <img src="build/img/icono_dormitorio.svg" alt="icono dormitorio">
-                <p>4</p>
-              </li><!--Icono 3-->
-
-            </ul><!-- .iconos-caracteristicas-->
-
-            <a href="anuncio.php" class="boton boton-amarillo"> Ver propiedad</a>
-
-          </div><!-- .contenido-anuncio-->
-
-        </div><!-- .anuncio primer anuncio-->
-
-        <div class="anuncio">
-
-          <picture>
-            <source srcset="build/img/anuncio2.webp" type="image/webp">
-
-            <source srcset="build/img/anuncio2.jpg" type="image/jpeg">
-
-            <img src="build/img/anuncio2.jpg" alt="Anuncio" loading="lazy">
-          </picture>
-
-          <div class="contenido-anuncio">
-            <h3>Casa en la Playa</h3>
-            <p>Casa en el lago con excelente vista, acabados de lujo a un excelente precio</p>
-            <p class="precio"> $ 3.000.000</p>
-
-            <ul class="iconos-caracteristicas">
-
-              <li>
-                <img src="build/img/icono_wc.svg" alt="icono wc">
-                <p>3</p>
-              </li><!-- icono 1-->
-
-              <li>
-                <img src="build/img/icono_estacionamiento.svg" alt="icono estacionamiento">
-                <p>2</p>
-              </li><!--Icono 2-->
-
-              <li>
-                <img src="build/img/icono_dormitorio.svg" alt="icono dormitorio">
-                <p>4</p>
-              </li><!--Icono 3-->
-
-            </ul><!-- .iconos-caracteristicas-->
-
-            <a href="anuncio.php" class="boton boton-amarillo"> Ver propiedad</a>
-
-          </div><!-- .contenido-anuncio-->
-
-        </div><!-- .anuncio segundo anuncio-->
-
-        <div class="anuncio">
-
-          <picture>
-            <source srcset="build/img/anuncio3.webp" type="image/webp">
-
-            <source srcset="build/img/anuncio3.jpg" type="image/jpeg">
-
-            <img src="build/img/anuncio3.jpg" alt="Anuncio" loading="lazy">
-          </picture>
-
-          <div class="contenido-anuncio">
-            <h3>Casa con alberca</h3>
-            <p>Casa en el lago con excelente vista, acabados de lujo a un excelente precio</p>
-            <p class="precio"> $ 3.000.000</p>
-
-            <ul class="iconos-caracteristicas">
-
-              <li>
-                <img src="build/img/icono_wc.svg" alt="icono wc">
-                <p>3</p>
-              </li><!-- icono 1-->
-
-              <li>
-                <img src="build/img/icono_estacionamiento.svg" alt="icono estacionamiento">
-                <p>2</p>
-              </li><!--Icono 2-->
-
-              <li>
-                <img src="build/img/icono_dormitorio.svg" alt="icono dormitorio">
-                <p>4</p>
-              </li><!--Icono 3-->
-
-            </ul><!-- .iconos-caracteristicas-->
-
-            <a href="anuncio.php" class="boton boton-amarillo"> Ver propiedad</a>
-
-          </div><!-- .contenido-anuncio-->
-
-        </div><!-- .anuncio tercer anuncio-->
+      include 'includes/templates/anuncio.php' 
+      ?>
 
 
-
-      </div><!--.contenedor-anuncios -->
       <div class="alinear-derechaLg">
         <a href="anuncios.php" class="boton-verde">Ver Todas</a>
       </div>
@@ -180,8 +62,6 @@ incluirTemplate('header', $inicio= true);
       <p>Llena el formulario de contacto y un asesor se comunicará contigo a la brevedad</p>
       <a href="contacto.php" class="boton-amarillo-il">Contáctanos</a>
     </div>
-      
-  
     </section> <!-- .imagen-contacto seccion de contacto-->
 
     <div class="contenedor seccion seccion-inferior">

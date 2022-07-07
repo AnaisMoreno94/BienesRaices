@@ -7,7 +7,7 @@
         color: darken($gris,40);
     }
     .anuncio{
-        background-color: darken($grisOscuro,5);
+        background-color: $grisOscuro;
         border-color: darken($grisOscuro, 7);
         .iconos-caracteristicas{
             p{color: black;
