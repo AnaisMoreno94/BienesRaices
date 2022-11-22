@@ -1,3 +1,11 @@
+<?php 
+     if(session_id() == ''){
+      session_start();
+   }
+
+   $auth = $_SESSION['login'] ?? false;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,10 +34,16 @@
           </div>
 
           <nav class="navegacion">
-            <a href="nosotros.php">Nosotros</a>
-            <a href="anuncios.php">Anuncios</a>
-            <a href="blog.php">Blog</a>
-            <a href="contacto.php">Contacto</a>
+            <a href="/nosotros.php">Nosotros</a>
+            <a href="/anuncios.php">Anuncios</a>
+            <a href="/blog.php">Blog</a>
+            <a href="/contacto.php">Contacto</a>
+            <?php if(!$auth and $_SERVER["REQUEST_URI"] != '/login.php'): ?>
+            <a href="/login.php">Iniciar Sesion</a>
+            <?php  endif; ?>
+            <?php if($auth): ?>
+            <a href="/cerrar-sesion.php">Cerrar sesion</a>
+            <?php  endif; ?>
             <p><span class="dark-mode-boton">&#9728</span></p>
           </nav>
 

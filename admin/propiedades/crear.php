@@ -1,4 +1,11 @@
 <?php
+    require '../../includes/funciones.php';
+    //verificar autenticacion 
+    $auth= autenticado();
+    if(!$auth){
+        header('Location: /');
+    }
+
     // Base de datos
     require '../../includes/config/database.php';
     $db = conectarDB();
@@ -109,7 +116,6 @@
             }
         }
     }
-    require '../../includes/funciones.php';
 
     incluirTemplate('header');
 ?>
@@ -184,5 +190,5 @@
     </main>
 
 <?php 
-    incluirTemplate('footer-admin');
+    incluirTemplate('footer');
 ?> 

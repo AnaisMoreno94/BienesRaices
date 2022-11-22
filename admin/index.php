@@ -1,48 +1,54 @@
 <?php 
-    // Importar la conexión
-    require '../includes/config/database.php';
-    $db = conectarDB();
+  require '../includes/funciones.php';
 
-    // Escribir el Query
-    $query = "SELECT * FROM propiedades";
+  //verificar autenticacion
+  $auth= autenticado();
+  if(!$auth){
+      header('Location: /');
+  }
+  
+  // Importar la conexión
+  require '../includes/config/database.php';
+  $db = conectarDB();
 
-    // Consultar la BD 
-    $resultadoConsulta = mysqli_query($db, $query);
+  // Escribir el Query
+  $query = "SELECT * FROM propiedades";
 
-    // Muestra mensaje condicional al agregar o editar propiedades
-    $resultado = $_GET['resultado'] ?? null;
+  // Consultar la BD 
+  $resultadoConsulta = mysqli_query($db, $query);
+
+  // Muestra mensaje condicional al agregar o editar propiedades
+  $resultado = $_GET['resultado'] ?? null;
 
 
-    //Verificar tipo de request para envio de query de eliminacion 
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      $id = $_POST['id'];
-      $id = filter_var($id , FILTER_VALIDATE_INT);
+  //Verificar tipo de request para envio de query de eliminacion 
+  if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $id = $_POST['id'];
+    $id = filter_var($id , FILTER_VALIDATE_INT);
 
-      if($id){
+    if($id){
 
-        //Seleccionar el Archivo de la imagen
-        $query= "SELECT imagen FROM propiedades WHERE id= ${id}";
-        $resultado = mysqli_query($db, $query);
-        $propiedad = mysqli_fetch_assoc($resultado);
+      //Seleccionar el Archivo de la imagen
+      $query= "SELECT imagen FROM propiedades WHERE id= ${id}";
+      $resultado = mysqli_query($db, $query);
+      $propiedad = mysqli_fetch_assoc($resultado);
 
-        //Eliminar el archivo de la imagen
-        unlink('../imagenes/'. $propiedad['imagen']);
+      //Eliminar el archivo de la imagen
+      unlink('../imagenes/'. $propiedad['imagen']);
 
-        //Elimina la propiedad
-        $query= "DELETE FROM propiedades WHERE id = ${id}";
-        $resultado= mysqli_query($db, $query);
+      //Elimina la propiedad
+      $query= "DELETE FROM propiedades WHERE id = ${id}";
+      $resultado= mysqli_query($db, $query);
 
-        if($resultado) {
-          header('location: /admin?resultado=3');
-        }
+      if($resultado) {
+        header('location: /admin?resultado=3');
       }
     }
+  }
     
 
-    // Incluye un template
-
-    require '../includes/funciones.php';
-    incluirTemplate('header-admin');
+  // Incluye un template
+  incluirTemplate('header');
 
 ?>
 
@@ -111,5 +117,5 @@
     // Cerrar la conexion
     mysqli_close($db);
 
-    incluirTemplate('footer-admin');
+    incluirTemplate('footer');
 ?>

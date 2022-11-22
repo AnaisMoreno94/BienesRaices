@@ -1,4 +1,11 @@
 <?php
+    require '../../includes/funciones.php';
+    //verificar autenticaicon
+    $auth= autenticado();
+    if(!$auth){
+        header('Location: /');
+    }
+
     //validacion de dato id
     $id= $_GET['id'];
     $id= filter_var($id, FILTER_VALIDATE_INT);
@@ -129,8 +136,8 @@
             }
         }
     }
-    require '../../includes/funciones.php';
 
+    //incluir header
     incluirTemplate('header');
 ?>
 
@@ -203,5 +210,5 @@
     </main>
 
 <?php 
-    incluirTemplate('footer-admin');
+    incluirTemplate('footer');
 ?> 
