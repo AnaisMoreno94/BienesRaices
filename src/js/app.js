@@ -20,11 +20,11 @@ function showMenu() {
 function darkMode() {
     
     const botonDarkMode = document.querySelector('.dark-mode-boton');
-    const preferenciaModoPantalla = window.matchMedia('(prefers-color-scheme: dark)')
+    const preferenciaModoPantalla = window.matchMedia('(prefers-color-scheme: dark)');
 
     // console.log(preferenciaModoPantalla.matches);
     
-    /*
+    
     // para que cargue automaticamente el modo de pantalla preferido por el usuario
     if(preferenciaModoPantalla){
         document.body.classList.add('dark-mode');
@@ -39,7 +39,7 @@ function darkMode() {
             document.body.classList.remove('dark-mode');
         }
     })
-    */
+    
 
 
 
