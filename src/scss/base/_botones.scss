@@ -19,14 +19,19 @@
     @include boton($verde, inline-block);
 }
 
-.btn-borrar{
-    background-color: $rojo;
+
+.btn-editar, .btn-borrar{
+    color: #000;
+    padding: 5px;
     border: none;
-}
-.btn-editar{
-    background-color: $amarillo;
-    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: none;
+    
 }
 .btn-secondary:hover{
-    background-color: $grisOscuro;
+    background-color: rgba(177, 171, 171, 0.836);
+}
+.btn-editar:visited{
+    color: #000;
 }
